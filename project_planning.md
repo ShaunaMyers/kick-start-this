@@ -10,7 +10,7 @@
 * [x] Create Project Planning Document  
 * [x] Initialize React repository with TypeScript (don’t write any code just yet!)  
 * [x] Install material-ui, stripe, react-router-dom, & reacter-hook-form
-* [ ] Create a [PR template](https://github.com/)  
+* [ ] Create a [PR template](https://github.com/ShaunaMyers/kick-start-this/blob/main/pull_request_template.md)  
 * [ ] Determine the MVP (knowing it could change as the project continues)  
 * [ ] Create wireframes  
 * [ ] Construct schema design  
