@@ -1,16 +1,19 @@
 import Product from '../Product/Product';
+import Grid from '@material-ui/core/Grid';
+// import { AllProducts } from '../../types'; 
 
-function Products({ products }) {
+const Products = ({ productsList }) => {
 
-    const allProducts = products.map(item => {
-       return <Product key={item.item_id} image={item.images[0]} title={item.title} description={item.description}/>
+
+    const allProducts = productsList.map(item => {
+       return <Product key={item.product_id} image={item.images[0]} title={item.title} description={item.description} funds_goal={item.funds_goal}/>
     })
 
     return (
-      <section className="App">
+      <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
         {allProducts}
-      </section>
+      </Grid>
     );
-  }
+}
   
   export default Products;
