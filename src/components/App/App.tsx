@@ -2,12 +2,14 @@ import { useState, useEffect } from 'react';
 import './App.css';
 import { sampleProducts } from '../../sample_product_data';
 import Products from '../Products/Products';
+import { AllProducts } from '../../types';
+
 
 function App() {
 
-  const [products, setProducts] = useState([]);
+  const [products, setProducts]: [[], any] = useState([]);
 
-  const returnProducts = () => {
+  const returnProducts = (): AllProducts[] | undefined => {
     return sampleProducts.rows;
   }
 
@@ -22,7 +24,7 @@ function App() {
         <h1>Kickstart This</h1>
       </header>
       <section>
-        <Products products={products}/>
+        <Products productsList={products}/>
       </section>
     </main>
   );
