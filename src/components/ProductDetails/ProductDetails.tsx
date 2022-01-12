@@ -44,7 +44,7 @@ function ProductDetails() {
                     Funds Raised: ${singleProduct.funds_raised}
                   </Typography>
                   <Typography>
-                    <Link to="/donate"><button>Donate</button></Link>
+                    <Link to={`/donate/${id}/${singleProduct.title}`}><button>Donate</button></Link>
                   </Typography>
                   <Typography>
                     <Link to="/">Return to browse all products</Link>
