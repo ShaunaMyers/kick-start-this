@@ -39,8 +39,10 @@ function ProductDetails() {
                     {singleProduct.description}
                   </Typography>
                   <Typography variant='h6' component='div'>
-                    ${singleProduct.funds_goal}
-                    ${singleProduct.funds_raised}
+                    Funds Goal: ${singleProduct.funds_goal}
+                  </Typography>
+                  <Typography variant='h6' component='div'>
+                    Funds Raised: ${singleProduct.funds_raised}
                   </Typography>
                   <Button>Donate</Button>
                 </CardContent>

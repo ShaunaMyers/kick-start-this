@@ -49,7 +49,7 @@ function App() {
             <Box sx={{ flexGrow: 0 }}>
               <Tooltip title="Add Your Product">
                 <IconButton sx={{ p: 0 }}>
-                  <AddIcon fontSize="Large"/> 
+                  <AddIcon fontSize="large"/> 
                 </IconButton>
               </Tooltip>
             </Box>
