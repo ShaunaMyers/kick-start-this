@@ -7,7 +7,10 @@ import AppBar from '@material-ui/core/AppBar';
 import Container from '@material-ui/core/Container';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-
+import Tooltip from '@material-ui/core/Tooltip';
+import Box from '@material-ui/core/Box';
+import IconButton from '@material-ui/core/IconButton';
+import AddIcon from '@material-ui/icons/Add';
 
 function App() {
 
@@ -25,16 +28,24 @@ function App() {
   return (
     <main className="App">
       <AppBar position="static">
-        <Container>
+        <Container maxWidth='xl'>
           <Toolbar disableGutters>
             <Typography
               variant="h3"
               noWrap
               component="div"
               sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
+              style={{flex: 1}}
             >
               Kickstart This
             </Typography>
+            <Box sx={{ flexGrow: 0 }}>
+              <Tooltip title="Add Your Product">
+                <IconButton sx={{ p: 0 }}>
+                  <AddIcon fontSize="Large"/> 
+                </IconButton>
+              </Tooltip>
+            </Box>
           </Toolbar>
         </Container>
       </AppBar>
