@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { sampleProducts } from '../../sample_product_data';
 import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
@@ -44,7 +44,7 @@ function ProductDetails() {
                   <Typography variant='h6' component='div'>
                     Funds Raised: ${singleProduct.funds_raised}
                   </Typography>
-                  <Button>Donate</Button>
+                  <Link to='/donate'><button>Donate</button></Link>
                 </CardContent>
             </Card>
         }
