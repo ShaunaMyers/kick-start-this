@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
 import './App.css';
-import { sampleProducts } from '../../sample_product_data';
 import Products from '../Products/Products';
+import ProductDetails from '../ProductDetails/ProductDetails';
+import DonationForm from '../DonationForm/DonationForm';
+import { Routes, Route, useParams } from 'react-router-dom';
 import { AllProducts } from '../../types';
 import AppBar from '@material-ui/core/AppBar';
 import Container from '@material-ui/core/Container';
@@ -11,10 +13,12 @@ import Tooltip from '@material-ui/core/Tooltip';
 import Box from '@material-ui/core/Box';
 import IconButton from '@material-ui/core/IconButton';
 import AddIcon from '@material-ui/icons/Add';
+import { sampleProducts } from '../../sample_product_data';
 
 function App() {
 
   const [products, setProducts]: [[], any] = useState([]);
+  let { id } = useParams();
 
   const returnProducts = (): AllProducts[] | undefined => {
     return sampleProducts.rows;
@@ -24,6 +28,10 @@ function App() {
     const data = returnProducts();
     setProducts(data)
   }, [])
+
+  const returnProductInfo = () => {
+    return products.find(item => item.product_id === id)
+  }
 
   return (
     <main className="App">
@@ -42,16 +50,18 @@ function App() {
             <Box sx={{ flexGrow: 0 }}>
               <Tooltip title="Add Your Product">
                 <IconButton sx={{ p: 0 }}>
-                  <AddIcon fontSize="Large"/> 
+                  <AddIcon fontSize="large"/> 
                 </IconButton>
               </Tooltip>
             </Box>
           </Toolbar>
         </Container>
       </AppBar>
-      <section>
-        <Products productsList={products}/>
-      </section>
+      <Routes>
+        <Route path="/" element={<Products productsList={products}/>} />
+        <Route path="/products/:id" element={<ProductDetails />} />
+        <Route path="/donate" element={<DonationForm />} />
+      </Routes>
     </main>
   );
 }
