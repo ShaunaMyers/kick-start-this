@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import './App.css';
 import Products from '../Products/Products';
 import ProductDetails from '../ProductDetails/ProductDetails';
+import DonationForm from '../DonationForm/DonationForm';
 import { Routes, Route, useParams } from 'react-router-dom';
 import { AllProducts } from '../../types';
 import AppBar from '@material-ui/core/AppBar';
@@ -58,7 +59,8 @@ function App() {
       </AppBar>
       <Routes>
         <Route path="/" element={<Products productsList={products}/>} />
-        <Route path="/products/:id" element={<ProductDetails />}/>
+        <Route path="/products/:id" element={<ProductDetails />} />
+        <Route path="/donate" element={<DonationForm />} />
       </Routes>
     </main>
   );
