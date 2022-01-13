@@ -17,3 +17,18 @@ export const getSingleProduct = (id) => {
         return response.json()
     })
 };
+
+  export const addSingleProduct = (newProduct) => {
+    return fetch('https://kickstartthisapi.herokuapp.com/products', {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify(newProduct)
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw Error('Your product was not added, please try again')
+      }
+    })
+};
