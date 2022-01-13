@@ -8,7 +8,7 @@ export const getAllProducts = () => {
       })
 };
 
-export const getSingleProduct = (id) => {
+export const getSingleProduct = (id: string) => {
     return fetch(`https://kickstartthisapi.herokuapp.com/product/${id}`)
       .then(response => {
         if (!response.ok) {
@@ -18,7 +18,7 @@ export const getSingleProduct = (id) => {
     })
 };
 
-export const addSingleProduct = (newProduct) => {
+export const addSingleProduct = (newProduct: {}) => {
     return fetch('https://kickstartthisapi.herokuapp.com/products', {
       method: 'POST',
       headers: {
@@ -33,7 +33,7 @@ export const addSingleProduct = (newProduct) => {
     })
 };
 
-export const deleteSingleProduct = (id) => {
+export const deleteSingleProduct = (id: number) => {
     return fetch('https://kickstartthisapi.herokuapp.com/products', {
       method: 'DELETE',
       headers: {
@@ -48,7 +48,7 @@ export const deleteSingleProduct = (id) => {
     })
 };
 
-export const updateFundsRaised = (funds_raised, id) => {
+export const updateFundsRaised = (funds_raised: number, id: number) => {
   return fetch(`https://kickstartthisapi.herokuapp.com/products/${id}`, {
     method: 'PATCH',
     headers: {
