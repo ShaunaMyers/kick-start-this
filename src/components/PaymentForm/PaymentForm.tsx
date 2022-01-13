@@ -23,7 +23,7 @@ const CARD_OPTIONS = {
     }
 }
 
-const PaymentForm = () => {
+const PaymentForm = ({ handleUpdateFundsRaised, id }) => {
     const [successful, setSuccessful] = useState(false);
     const [donation, setDonation] = useState(null)
     const stripe = useStripe();
@@ -57,6 +57,10 @@ const PaymentForm = () => {
         }
     }
 
+    const onUpdateFundsRaised = () => {
+        handleUpdateFundsRaised(donation, id)
+    }
+
 
     return(
        <>
@@ -69,7 +73,7 @@ const PaymentForm = () => {
                         <CardElement options={CARD_OPTIONS} />
                     </div>
                 </fieldSet>
-                <button>Donate</button>
+                <button onClick={() => onUpdateFundsRaised()}>Donate</button>
             </form>
             :
             <div><h2>You have succesfully made a donation! Thank you!</h2></div>
