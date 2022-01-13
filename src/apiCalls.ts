@@ -1,3 +1,5 @@
+import { NewProduct } from './types';
+
 export const getAllProducts = () => {
     return fetch('https://kickstartthisapi.herokuapp.com/')
       .then(response => {
@@ -18,7 +20,7 @@ export const getSingleProduct = (id: string) => {
     })
 };
 
-export const addSingleProduct = (newProduct: {}) => {
+export const addSingleProduct = (newProduct: NewProduct) => {
     return fetch('https://kickstartthisapi.herokuapp.com/products', {
       method: 'POST',
       headers: {

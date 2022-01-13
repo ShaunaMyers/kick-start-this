@@ -4,7 +4,11 @@ import { Typography, Button, Divider } from '@material-ui/core';
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 
-const DonationForm = ({ handleUpdateFundsRaised }) => {
+interface Props {
+    handleUpdateFundsRaised: Function
+}
+
+const DonationForm = ({ handleUpdateFundsRaised }: Props) => {
 
     const { id, title } = useParams();
 

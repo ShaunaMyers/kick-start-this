@@ -1,6 +1,12 @@
 import Products from '../Products/Products';
+import { SingleProduct } from '../../types';
 
-const AdminView = ({ productsList, handleDeleteProduct }) => {
+interface Props {
+    productsList: SingleProduct[],
+    handleDeleteProduct: Function
+}
+
+const AdminView = ({ productsList, handleDeleteProduct }: Props) => {
 
     const isAdmin = true;
 

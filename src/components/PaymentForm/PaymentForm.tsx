@@ -1,41 +1,45 @@
 import { useState } from 'react';
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
-import { stripVTControlCharacters } from 'util';
 import axios from "axios";
 
-const CARD_OPTIONS = {
-    iconStyle: "solid",
-    style: {
-        base: {
-            iconColor: "#c4f0ff",
-            color: "#fff",
-            fontWeight: 500,
-            fontFamily: "Roboto, Open Sans, Segoe UI, sans-serif",
-            fontSize: "16px",
-            fontSmoothing: "antialiased",
-            ":-webkit0-autofill": { color: "#fce883" },
-            "::placeholder": { color: "#87bbfd" }
-        },
-        invalid: {
-            iconColor: "#ffc7ee",
-            color: "ffc7ee"
-        }
-    }
+// const CARD_OPTIONS = {
+//     iconStyle: "solid",
+//     style: {
+//         base: {
+//             iconColor: "#c4f0ff",
+//             color: "#fff",
+//             fontWeight: 500,
+//             fontFamily: "Roboto, Open Sans, Segoe UI, sans-serif",
+//             fontSize: "16px",
+//             fontSmoothing: "antialiased",
+//             ":-webkit0-autofill": { color: "#fce883" },
+//             "::placeholder": { color: "#87bbfd" }
+//         },
+//         invalid: {
+//             iconColor: "#ffc7ee",
+//             color: "ffc7ee"
+//         }
+//     }
+// }
+
+interface Props {
+    handleUpdateFundsRaised: Function,
+    id: string
 }
 
-const PaymentForm = ({ handleUpdateFundsRaised, id }) => {
-    const [successful, setSuccessful] = useState(false);
-    const [donation, setDonation] = useState(null)
+const PaymentForm = ({ handleUpdateFundsRaised, id }: Props) => {
+    const [successful, setSuccessful] = useState<boolean>(false);
+    const [donation, setDonation] = useState<string>('')
     const stripe = useStripe();
     const elements = useElements();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const [error, paymentMethod] = await stripe.createPaymentMethod({
+        const [error, paymentMethod]: any = await stripe!.createPaymentMethod({
             type: "card",
-            card: elements?.getElement(CardElement)
+            card: elements!.getElement(CardElement)
         })
-
+    
         if (!error) {
             try {
                 const { id } = paymentMethod;
@@ -44,7 +48,7 @@ const PaymentForm = ({ handleUpdateFundsRaised, id }) => {
                     id
                 })
     
-                if(Response.data.success) {
+                if(response.data.success) {
                     console.log("Your payment was successful!");
                     setSuccessful(true);
                 }
@@ -66,13 +70,15 @@ const PaymentForm = ({ handleUpdateFundsRaised, id }) => {
        <>
         {!successful ?
             <form onSubmit={handleSubmit}>
-                <label for="donation-amount">Donation Amount</label>
+                <label htmlFor="donation-amount">Donation Amount</label>
                 <input onChange={(e) => setDonation(e.target.value)} id="donation-amount" type="number" step="0.01" placeholder="$0" value={donation}/>
-                <fieldSet>
+                <fieldset>
                     <div>
-                        <CardElement options={CARD_OPTIONS} />
+                        <CardElement 
+                        // options={CARD_OPTIONS} 
+                        />
                     </div>
-                </fieldSet>
+                </fieldset>
                 <button onClick={() => onUpdateFundsRaised()}>Donate</button>
             </form>
             :
