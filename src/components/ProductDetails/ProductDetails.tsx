@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
-import { sampleProducts } from "../../sample_product_data";
+import { getSingleProduct } from "../../apiCalls";
+// import { sampleProducts } from "../../sample_product_data";
 import Card from "@material-ui/core/Card";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
@@ -9,15 +10,26 @@ import Typography from "@material-ui/core/Typography";
 function ProductDetails() {
 
     const [singleProduct, setSingleProduct] = useState({});
+    const [error, setError] = useState('');
     let { id } = useParams();
 
     const findProduct = () => {
-        return sampleProducts.rows.find(product => product.product_id === parseInt(id));
-      }
+        setError('')
+        getSingleProduct(id)
+        .then(result => {
+          if (result) {
+            setSingleProduct(result.rows[0])
+          } else {
+            setError('Oop, there was a problem finding the product')
+          }
+        })
+        .catch(err => {
+          setError('Oops, problem finding product. Please refresh the page.')
+        })
+    }
     
     useEffect(() => {
-    const foundProduct = findProduct();
-    setSingleProduct(foundProduct)
+      findProduct();
     }, [])
 
     return (
