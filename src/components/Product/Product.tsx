@@ -27,7 +27,9 @@ function Product({ id, image, title, description, funds_goal }) {
               <Typography variant='h6' component='div'>
                  ${funds_goal}
               </Typography>
-              <Link to={`/products/${id}`}><button>More Info</button></Link>
+              <Link to={`/products/${id}`}> 
+                <button>More Info</button>
+              </Link>
             </CardContent>
           </CardActionArea>
         </Card>

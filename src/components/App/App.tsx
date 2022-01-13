@@ -60,7 +60,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Products productsList={products}/>} />
         <Route path="/products/:id" element={<ProductDetails />} />
-        <Route path="/donate" element={<DonationForm />} />
+        <Route path="/donate/:id/:title" element={<DonationForm />} />
       </Routes>
     </main>
   );
