@@ -64,7 +64,7 @@ const CreateProduct = ({ handleAddProduct }: Props) => {
         <>
             <FormControl>
                 <TextField onChange={(e) => setCreatorName(e.target.value)} label="Full Name" color="primary" value={creatorName} focused/>
-                <TextField onChange={(e) => setCreatorEmail(e.target.value)} type="email" label="Email" color="secondary" value={creatorEmail} focused />
+                <TextField onChange={(e) => setCreatorEmail(e.target.value)} type="email" label="Email" color="primary" value={creatorEmail} focused />
                 <TextField onChange={(e) => setTitle(e.target.value)} label="Product Title" variant="standard" color="primary" value={title} focused/>
                 <TextField onChange={(e) => setDescription(e.target.value)} label="Product Description" variant="standard" color="primary" value={description} focused/>
                 <TextField onChange={(e) => setFundsGoal(e.target.value)} label="Funds Needed" variant="standard" color="primary" value={fundsGoal} focused/>

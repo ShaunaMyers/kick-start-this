@@ -1,6 +1,6 @@
-import { FormEvent, useState } from 'react';
+import { useState } from 'react';
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
-// import axios from "axios";
+import axios from "axios";
 
 // const CARD_OPTIONS = {
 //     iconStyle: "solid",
@@ -22,39 +22,43 @@ import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 //     }
 // }
 
-const PaymentForm = () => {
+interface Props {
+    handleUpdateFundsRaised: Function,
+    id: string
+}
+
+const PaymentForm = ({ handleUpdateFundsRaised, id }: Props) => {
     const [successful, setSuccessful] = useState<boolean>(false);
     const [donation, setDonation] = useState<string>('')
     const stripe = useStripe();
     const elements = useElements();
 
-    const handleSubmit = (e )=> {
-        // async (e: React.FormEvent<FormEvent<Element>>) =>
-    //     e.preventDefault();
-    //     // const [error, paymentMethod]: any = await stripe!.createPaymentMethod({
-    //     //     type: "card",
-    //     //     card: elements?.getElement(CardElement)
-    //     // })
-
-    //     // if (!error) {
-    //     //     try {
-    //     //         const { id } = paymentMethod;
-    //     //         const response = await axios.post("http://localhost:4000/payment", {
-    //     //             amount: donation,
-    //     //             id
-    //     //         })
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const [error, paymentMethod]: any = await stripe!.createPaymentMethod({
+            type: "card",
+            card: elements!.getElement(CardElement)
+        })
     
-    //     //         if(response.data.success) {
-    //     //             console.log("Your payment was successful!");
-    //     //             setSuccessful(true);
-    //     //         }
+        if (!error) {
+            try {
+                const { id } = paymentMethod;
+                const response = await axios.post("http://localhost:4000/payment", {
+                    amount: donation,
+                    id
+                })
     
-    //     //     } catch {
-    //     //         console.log(`Error message: ${error}`)
-    //     //     }
-    //     // } else {
-    //     //     console.log(error.message)
-    //     // }
+                if(response.data.success) {
+                    console.log("Your payment was successful!");
+                    setSuccessful(true);
+                }
+    
+            } catch {
+                console.log(`Error message: ${error}`)
+            }
+        } else {
+            console.log(error.message)
+        }
     }
 
     const onUpdateFundsRaised = () => {
@@ -65,13 +69,13 @@ const PaymentForm = () => {
     return(
        <>
         {!successful ?
-            <form onSubmit={(e) => handleSubmit(e)}>
-                <label>Donation Amount</label>
-                <input id="donation-amount" onChange={(e) => setDonation(e.target.value)} type="number" step="0.01" placeholder="$0" value={donation}/>
+            <form onSubmit={handleSubmit}>
+                <label htmlFor="donation-amount">Donation Amount</label>
+                <input onChange={(e) => setDonation(e.target.value)} id="donation-amount" type="number" step="0.01" placeholder="$0" value={donation}/>
                 <fieldset>
                     <div>
                         <CardElement 
-                            // options={CARD_OPTIONS} 
+                        // options={CARD_OPTIONS} 
                         />
                     </div>
                 </fieldset>
