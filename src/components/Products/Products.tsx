@@ -1,12 +1,11 @@
 import Product from '../Product/Product';
 import Grid from '@material-ui/core/Grid';
-// import { AllProducts } from '../../types'; 
 
-const Products = ({ productsList }) => {
 
+const Products = ({ productsList, isAdmin }) => {
 
     const allProducts = productsList.map(item => {
-       return <Product key={item.product_id} id={item.product_id} image={item.images[0]} title={item.title} description={item.description} funds_goal={item.funds_goal}/>
+       return <Product key={item.product_id} id={item.product_id} image={item.images[0]} title={item.title} description={item.description} funds_goal={item.funds_goal} isAdmin={isAdmin}/>
     })
 
     return (
