@@ -6,7 +6,18 @@ import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 
-function Product({ id, image, title, description, funds_goal, isAdmin, handleDeleteProduct }) {
+interface Props {
+   id: number, 
+   image: string,
+   title: string, 
+   description: string, 
+   funds_goal: number, 
+   funds_raised: number, 
+   isAdmin: boolean,
+   handleDeleteProduct: Function
+}
+
+function Product({ id, image, title, description, funds_goal, isAdmin, handleDeleteProduct }: Props) {
 
     const onDeleteProduct = () => {
       handleDeleteProduct(id);
@@ -14,7 +25,9 @@ function Product({ id, image, title, description, funds_goal, isAdmin, handleDel
 
     return (
       <Grid item xs={6}>
-        <Card sx={{ maxWidth: 450}}>
+        <Card 
+          // sx={{ maxWidth: 450}}
+        >
           <CardActionArea>
             <CardMedia
               component='img'

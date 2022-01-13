@@ -6,7 +6,7 @@ import ProductDetails from '../ProductDetails/ProductDetails';
 import DonationForm from '../DonationForm/DonationForm';
 import CreateProduct from '../CreateProduct/CreateProduct';
 import AdminView from '../AdminView/AdminView';
-import { Routes, Route, useParams, Link } from 'react-router-dom';
+import { Routes, Route, Link } from 'react-router-dom';
 import { SingleProduct, NewProduct } from '../../types';
 import AppBar from '@material-ui/core/AppBar';
 import Container from '@material-ui/core/Container';

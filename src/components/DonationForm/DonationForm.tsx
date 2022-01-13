@@ -8,7 +8,7 @@ const DonationForm = () => {
 
     const { id, title } = useParams();
 
-    const PUBLIC_KEY= "pk_test_51KHG52GKDS6iRdpblhIx1DXqNDKYFMHMyDzZbnv8ZSZBsLQ8E9kclzy3B2kWgGs6XQ7CmAzRnq2MwI4d9rnncZGf00VDPjSx92";
+    // const PUBLIC_KEY= "pk_test_51KHG52GKDS6iRdpblhIx1DXqNDKYFMHMyDzZbnv8ZSZBsLQ8E9kclzy3B2kWgGs6XQ7CmAzRnq2MwI4d9rnncZGf00VDPjSx92";
 
     const stripeTestPromise = loadStripe(PUBLIC_KEY);
 

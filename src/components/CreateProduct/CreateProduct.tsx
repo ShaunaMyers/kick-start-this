@@ -44,7 +44,6 @@ const CreateProduct = ({ handleAddProduct }: Props) => {
         const newProduct = { title: title, description: description, funds_goal: Number(fundsGoal), funds_raised: 0, images: formatImages(), creator_name: creatorName, creator_email: creatorEmail }
 
         handleAddProduct(newProduct);
-        // addSingleProduct(newProduct);
         setMessage('You have successfully added your product')
     }
 
