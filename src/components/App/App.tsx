@@ -18,9 +18,8 @@ import IconButton from '@material-ui/core/IconButton';
 import AddIcon from '@material-ui/icons/Add';
 
 const App = () => {
-
-  const [products, setProducts]: [[], any] = useState([]);
-  const [error, setError] = useState('');
+  const [products, setProducts] = useState<[]>([]);
+  const [error, setError] = useState<string>('');
   const isAdmin = false;
 
   const returnProducts = (): void => { 
@@ -53,8 +52,8 @@ const App = () => {
     setProducts(remainingProducts);
   }
 
-  const handleUpdateFundsRaised = (donation, id) => {
-    let foundProduct = products.find(product => product.product_id === parseInt(id));
+  const handleUpdateFundsRaised = (donation: string, id: string) => {
+    let foundProduct = products.find((product: string | number | []) => product.product_id === parseInt(id));
     const currentFunds = foundProduct.funds_raised;
     let totalFunds = currentFunds + parseInt(donation);
     updateFundsRaised(totalFunds, parseInt(id));
