@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import './App.css';
-import { getAllProducts, addSingleProduct } from '../../apiCalls';
+import { getAllProducts, addSingleProduct, deleteSingleProduct } from '../../apiCalls';
 import Products from '../Products/Products';
 import ProductDetails from '../ProductDetails/ProductDetails';
 import DonationForm from '../DonationForm/DonationForm';
@@ -21,7 +21,6 @@ const App = () => {
 
   const [products, setProducts]: [[], any] = useState([]);
   const [error, setError] = useState('');
-  // let { id } = useParams();
   const isAdmin = false;
 
   const returnProducts = (): void => {
@@ -34,7 +33,7 @@ const App = () => {
         setProducts(result.rows)
       }
     })
-    .catch(err => {
+    .catch((err) => {
       setError('Oops, problem loading products. Please refresh the page.')
     })
   }
@@ -43,9 +42,15 @@ const App = () => {
     returnProducts();
   }, [])
 
-  const handleAddProduct = (newProduct) => {
+  const handleAddProduct = (newProduct: {}) => {
     addSingleProduct(newProduct);
     setProducts([...products, newProduct])
+  }
+
+  const handleDeleteProduct = (id: number) => {
+    deleteSingleProduct(id);
+    const remainingProducts = products.filter(product => product.product_id !== id)
+    setProducts(remainingProducts);
   }
 
 
@@ -53,6 +58,7 @@ const App = () => {
     <main className="App">
       <AppBar position="static">
         <Container maxWidth='xl'>
+          {console.log('products', products)}
           <Toolbar disableGutters>
             <Typography
               variant="h3"
@@ -78,7 +84,7 @@ const App = () => {
         <Route path="/products/:id" element={<ProductDetails />} />
         <Route path="/donate/:id/:title" element={<DonationForm />} />
         <Route path="/createproduct" element={<CreateProduct handleAddProduct={handleAddProduct} />} />
-        <Route path="/adminview" element={<AdminView productsList={products} />} />
+        <Route path="/adminview" element={<AdminView productsList={products} handleDeleteProduct={handleDeleteProduct}/>} />
       </Routes>
     </main>
   );

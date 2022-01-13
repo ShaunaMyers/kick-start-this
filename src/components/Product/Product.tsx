@@ -6,7 +6,12 @@ import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 
-function Product({ id, image, title, description, funds_goal, isAdmin }) {
+function Product({ id, image, title, description, funds_goal, isAdmin, handleDeleteProduct }) {
+
+    const onDeleteProduct = () => {
+      handleDeleteProduct(id);
+    }
+
     return (
       <Grid item xs={6}>
         <Card sx={{ maxWidth: 450}}>
@@ -28,7 +33,7 @@ function Product({ id, image, title, description, funds_goal, isAdmin }) {
                  ${funds_goal}
               </Typography>
               {isAdmin ? 
-                  <button>Delete</button>
+                  <button onClick={() => onDeleteProduct()}>Delete</button>
                   : 
                   <Link to={`/products/${id}`}> 
                     <button>More Info</button>
