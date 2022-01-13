@@ -1,6 +1,7 @@
+import PaymentForm from '../PaymentForm/PaymentForm';
 import { useParams } from 'react-router-dom';
 import { Typography, Button, Divider } from '@material-ui/core';
-import { Elements, CardElement, ElementsConsumer } from '@stripe/react-stripe-js';
+import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 
 const DonationForm = () => {
