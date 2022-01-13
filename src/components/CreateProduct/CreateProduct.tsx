@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { FormControl, TextField, Button } from '@material-ui/core';
 
 interface Props {
-    handleAddProduct: Function
+    handleAddProduct: Function,
 }
 
 const CreateProduct = ({ handleAddProduct }: Props) => {
@@ -16,20 +16,15 @@ const CreateProduct = ({ handleAddProduct }: Props) => {
     const [images, setImages] = useState([]);
     const [creatorName, setCreatorName] = useState('');
     const [creatorEmail, setCreatorEmail] = useState('');
-    const [timer, setTimer] = useState('');
     const [error, setError] = useState('');
     const [message, setMessage] = useState('');
 
     const validateInputs = () => {
         if (!title || !description || !fundsGoal || !images.length || !creatorName || !creatorEmail) {
             setError('Please fill out all the fields')
-            setTimer(setTimeout(() => setError(''), 5000))
+            setTimeout(() => setError(''), 5000)
             return;
         } 
-        
-        // else {
-            //     setError('')
-            // }
     }
 
     const formatImages = () => {
@@ -43,7 +38,7 @@ const CreateProduct = ({ handleAddProduct }: Props) => {
         return formatted;
     }
         
-    const onAddProduct = (e) => {
+    const onAddProduct = (e: any) => {
         e.preventDefault();
         validateInputs();
         const newProduct = { title: title, description: description, funds_goal: parseInt(fundsGoal), funds_raised: 0, images: formatImages(), creator_name: creatorName, creator_email: creatorEmail }
@@ -53,7 +48,7 @@ const CreateProduct = ({ handleAddProduct }: Props) => {
         setMessage('You have successfully added your product')
     }
 
-    const handleAddImage = (e) => {
+    const handleAddImage = (e: any) => {
         e.preventDefault();
         if (images.length < 4) {
             images.length ? setImages([...images, singleImage])
