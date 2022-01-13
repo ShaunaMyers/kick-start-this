@@ -54,9 +54,10 @@ const App = () => {
   }
 
   const handleUpdateFundsRaised = (donation, id) => {
-    const currentFunds = products.find(product => product.product_id === parseInt(id)).funds_raised
-    let totalFunds = currentFunds + parseInt(donation)
-    updateFundsRaised(totalFunds, parseInt(id))
+    let foundProduct = products.find(product => product.product_id === parseInt(id));
+    const currentFunds = foundProduct.funds_raised;
+    let totalFunds = currentFunds + parseInt(donation);
+    updateFundsRaised(totalFunds, parseInt(id));
   }
 
   return (
