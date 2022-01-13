@@ -33,8 +33,8 @@ export const addSingleProduct = (newProduct) => {
     })
 };
 
-export const deleteProduct = (id) => {
-    return fetch(`https://kickstartthisapi.herokuapp.com/products/${id}`, {
+export const deleteSingleProduct = (id) => {
+    return fetch('https://kickstartthisapi.herokuapp.com/products', {
       method: 'DELETE',
       headers: {
         'content-type': 'application/json',
