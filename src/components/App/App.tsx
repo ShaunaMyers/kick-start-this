@@ -5,6 +5,7 @@ import Products from '../Products/Products';
 import ProductDetails from '../ProductDetails/ProductDetails';
 import DonationForm from '../DonationForm/DonationForm';
 import CreateProduct from '../CreateProduct/CreateProduct';
+import AdminView from '../AdminView/AdminView';
 import { Routes, Route, useParams, Link } from 'react-router-dom';
 import { AllProducts } from '../../types';
 import AppBar from '@material-ui/core/AppBar';
@@ -20,7 +21,8 @@ const App = () => {
 
   const [products, setProducts]: [[], any] = useState([]);
   const [error, setError] = useState('');
-  let { id } = useParams();
+  // let { id } = useParams();
+  const isAdmin = false;
 
   const returnProducts = (): void => {
     setError('');
@@ -72,10 +74,11 @@ const App = () => {
         </Container>
       </AppBar>
       <Routes>
-        <Route path="/" element={<Products productsList={products}/>} />
+        <Route path="/" element={<Products productsList={products} isAdmin={isAdmin} />} />
         <Route path="/products/:id" element={<ProductDetails />} />
         <Route path="/donate/:id/:title" element={<DonationForm />} />
-        <Route path="/createproduct" element={<CreateProduct handleAddProduct={handleAddProduct}/>}/>
+        <Route path="/createproduct" element={<CreateProduct handleAddProduct={handleAddProduct} />} />
+        <Route path="/adminview" element={<AdminView productsList={products} />} />
       </Routes>
     </main>
   );

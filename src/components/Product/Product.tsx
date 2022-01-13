@@ -6,7 +6,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 
-function Product({ id, image, title, description, funds_goal }) {
+function Product({ id, image, title, description, funds_goal, isAdmin }) {
     return (
       <Grid item xs={6}>
         <Card sx={{ maxWidth: 450}}>
@@ -27,9 +27,13 @@ function Product({ id, image, title, description, funds_goal }) {
               <Typography variant='h6' component='div'>
                  ${funds_goal}
               </Typography>
-              <Link to={`/products/${id}`}> 
-                <button>More Info</button>
-              </Link>
+              {isAdmin ? 
+                  <button>Delete</button>
+                  : 
+                  <Link to={`/products/${id}`}> 
+                    <button>More Info</button>
+                  </Link>
+              }
             </CardContent>
           </CardActionArea>
         </Card>
