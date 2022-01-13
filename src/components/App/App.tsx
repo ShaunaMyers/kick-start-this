@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import './App.css';
+import { getAllProducts } from '../../apiCalls';
 import Products from '../Products/Products';
 import ProductDetails from '../ProductDetails/ProductDetails';
 import DonationForm from '../DonationForm/DonationForm';
@@ -13,20 +14,30 @@ import Tooltip from '@material-ui/core/Tooltip';
 import Box from '@material-ui/core/Box';
 import IconButton from '@material-ui/core/IconButton';
 import AddIcon from '@material-ui/icons/Add';
-import { sampleProducts } from '../../sample_product_data';
 
 function App() {
 
   const [products, setProducts]: [[], any] = useState([]);
+  const [error, setError] = useState('')
   let { id } = useParams();
 
   const returnProducts = (): AllProducts[] | undefined => {
-    return sampleProducts.rows;
+    setError('');
+    getAllProducts()
+    .then(result => {
+      if (!result.rows.length) {
+        setError('Oops, it appears there are no products. Please add your own!')
+      } else {
+        setProducts(result.rows)
+      }
+    })
+    .catch(err => {
+      setError('Oops, problem loading products. Please refresh the page.')
+    })
   }
 
   useEffect(() => {
-    const data = returnProducts();
-    setProducts(data)
+    returnProducts();
   }, [])
 
   const returnProductInfo = () => {
