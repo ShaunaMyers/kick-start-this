@@ -56,3 +56,21 @@
 
 - [x] Create wireframes
 - [x] Link Design Inspirations
+
+## Day 5 ToDo- Wednesday
+
+- [x] apiCalls with Heroku endpoints accepting fetch requests
+- [x] Products view
+- [x] Single Product view
+- [x] Update Product's funds raised
+- [ ] Add Product
+- [ ] Delete Product
+- [ ] TypeScript
+- [ ] Minimal Styling
+
+## Day 6 ToDo- Thursday
+
+- [ ] Styling
+- [ ] Accessibility- semantic HTML & lighthouse run (save screenshot)
+- [ ] Consider MVC & separating concers in FE & BE (utils in FE?)
+- [ ] ReadMe
