@@ -1,4 +1,4 @@
-export interface AllProducts {
+export interface SingleProduct {
    product_id: number, 
    title: string, 
    description: string, 

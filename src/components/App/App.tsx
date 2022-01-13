@@ -7,7 +7,7 @@ import DonationForm from '../DonationForm/DonationForm';
 import CreateProduct from '../CreateProduct/CreateProduct';
 import AdminView from '../AdminView/AdminView';
 import { Routes, Route, useParams, Link } from 'react-router-dom';
-import { AllProducts } from '../../types';
+import { SingleProduct, NewProduct } from '../../types';
 import AppBar from '@material-ui/core/AppBar';
 import Container from '@material-ui/core/Container';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -23,7 +23,7 @@ const App = () => {
   const [error, setError] = useState('');
   const isAdmin = false;
 
-  const returnProducts = (): void => {
+  const returnProducts = (): void => { 
     setError('');
     getAllProducts()
     .then(result => {
@@ -42,14 +42,14 @@ const App = () => {
     returnProducts();
   }, [])
 
-  const handleAddProduct = (newProduct: {}) => {
+  const handleAddProduct = (newProduct: NewProduct) => {
     addSingleProduct(newProduct);
     setProducts([...products, newProduct])
   }
 
   const handleDeleteProduct = (id: number) => {
     deleteSingleProduct(id);
-    const remainingProducts = products.filter(product => product.product_id !== id)
+    const remainingProducts = products.filter((product: SingleProduct) => product.product_id !== id)
     setProducts(remainingProducts);
   }
 
@@ -64,14 +64,16 @@ const App = () => {
               variant="h3"
               noWrap
               component="div"
-              sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
+              // sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
               style={{flex: 1}}
             >
               Kickstart This
             </Typography>
             <Box sx={{ flexGrow: 0 }}>
               <Tooltip title="Add Your Product">
-                <IconButton component={Link} to="/createproduct" sx={{ p: 0 }}>
+                <IconButton component={Link} to="/createproduct" 
+                // sx={{ p: 0 }}
+                >
                   <AddIcon fontSize="large"/> 
                 </IconButton>
               </Tooltip>
@@ -80,7 +82,7 @@ const App = () => {
         </Container>
       </AppBar>
       <Routes>
-        <Route path="/" element={<Products productsList={products} isAdmin={isAdmin} />} />
+        <Route path="/" element={<Products productsList={products} isAdmin={isAdmin} handleDeleteProduct={handleDeleteProduct} />} />
         <Route path="/products/:id" element={<ProductDetails />} />
         <Route path="/donate/:id/:title" element={<DonationForm />} />
         <Route path="/createproduct" element={<CreateProduct handleAddProduct={handleAddProduct} />} />
