@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { addSingleProduct } from '../../apiCalls';
+import { Link } from 'react-router-dom';
 import { FormControl, TextField, Button } from '@material-ui/core';
 
 const CreateProduct = () => {
@@ -11,11 +12,11 @@ const CreateProduct = () => {
     const [images, setImages] = useState([]);
     const [creatorName, setCreatorName] = useState('');
     const [creatorEmail, setCreatorEmail] = useState('');
-    const [timer, setTimer] = useState('')
+    const [timer, setTimer] = useState('');
     const [error, setError] = useState('');
+    const [message, setMessage] = useState('');
 
     const validateInputs = () => {
-        console.log('single image', singleImage)
         if (!title || !description || !fundsGoal || !images.length || !creatorName || !creatorEmail) {
             setError('Please fill out all the fields')
             setTimer(setTimeout(() => setError(''), 5000))
@@ -23,16 +24,28 @@ const CreateProduct = () => {
         } 
         
         // else {
-        //     setError('')
-        // }
+            //     setError('')
+            // }
     }
 
+    const formatImages = () => {
+        let formatted = "{"
+        
+        images.forEach((item, i) => {
+            console.log('index', i)
+            i !== images.length - 1 || i !== 0 ? formatted += item + ", "
+            : formatted += item + "}";
+        })
+        return formatted;
+    }
+        
     const onAddProduct = (e) => {
-        validateInputs();
         e.preventDefault();
-        const newProduct = { title, description, funds_goal: parseInt(fundsGoal), images: images, creator_name: creatorName, creator_email: creatorEmail }
-        console.log(newProduct)
-        // addSingleProduct(newProduct);
+        validateInputs();
+        const newProduct = { title: title, description: description, funds_goal: parseInt(fundsGoal), funds_raised: 0, images: formatImages(), creator_name: creatorName, creator_email: creatorEmail }
+
+        addSingleProduct(newProduct);
+        setMessage('You have successfully added your product')
     }
 
     const handleAddImage = (e) => {
@@ -61,7 +74,9 @@ const CreateProduct = () => {
                     Add Photo
                 </Button>
                 <Button onClick={(e) => onAddProduct(e)} variant="contained" type="submit" color="seconday">Create Product</Button>
+                <Link to="/">Return to browsing products</Link>
                 {error && <p>{error}</p>}
+                {message && <p>{message}</p>}
             </FormControl>
         </>
     )
