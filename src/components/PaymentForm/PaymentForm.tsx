@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { FormEvent, useState } from 'react';
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import axios from "axios";
 
@@ -28,9 +28,9 @@ const PaymentForm = () => {
     const stripe = useStripe();
     const elements = useElements();
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = async (e: React.FormEvent<FormEvent>) => {
         e.preventDefault();
-        const [error, paymentMethod] = await stripe.createPaymentMethod({
+        const [error, paymentMethod]: any = await stripe!.createPaymentMethod({
             type: "card",
             card: elements?.getElement(CardElement)
         })
@@ -43,7 +43,7 @@ const PaymentForm = () => {
                     id
                 })
     
-                if(Response.data.success) {
+                if(response.data.success) {
                     console.log("Your payment was successful!");
                     setSuccessful(true);
                 }
@@ -60,14 +60,14 @@ const PaymentForm = () => {
     return(
        <>
         {!successful ?
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={(e) => handleSubmit(e)}>
                 <label for="donation-amount">Donation Amount</label>
                 <input onChange={(e) => setDonation(e.target.value)} id="donation-amount" type="number" step="0.01" placeholder="$0" value={donation}/>
-                <fieldSet>
+                <fieldset>
                     <div>
                         <CardElement options={CARD_OPTIONS} />
                     </div>
-                </fieldSet>
+                </fieldset>
                 <button>Donate</button>
             </form>
             :

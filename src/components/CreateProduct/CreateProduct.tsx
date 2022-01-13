@@ -9,15 +9,15 @@ interface Props {
 
 const CreateProduct = ({ handleAddProduct }: Props) => {
 
-    const [title, setTitle] = useState('');
-    const [description, setDescription] = useState('');
-    const [fundsGoal, setFundsGoal] = useState(0);
-    const [singleImage, setSingleImage] = useState('');
-    const [images, setImages] = useState([]);
-    const [creatorName, setCreatorName] = useState('');
-    const [creatorEmail, setCreatorEmail] = useState('');
-    const [error, setError] = useState('');
-    const [message, setMessage] = useState('');
+    const [title, setTitle] = useState<string>('');
+    const [description, setDescription] = useState<string>('');
+    const [fundsGoal, setFundsGoal] = useState<string>('');
+    const [singleImage, setSingleImage] = useState<string>('');
+    const [images, setImages] = useState<string[]>([]);
+    const [creatorName, setCreatorName] = useState<string>('');
+    const [creatorEmail, setCreatorEmail] = useState<string>('');
+    const [error, setError] = useState<string>('');
+    const [message, setMessage] = useState<string>('');
 
     const validateInputs = () => {
         if (!title || !description || !fundsGoal || !images.length || !creatorName || !creatorEmail) {
@@ -38,17 +38,17 @@ const CreateProduct = ({ handleAddProduct }: Props) => {
         return formatted;
     }
         
-    const onAddProduct = (e: any) => {
+    const onAddProduct = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         e.preventDefault();
         validateInputs();
-        const newProduct = { title: title, description: description, funds_goal: parseInt(fundsGoal), funds_raised: 0, images: formatImages(), creator_name: creatorName, creator_email: creatorEmail }
+        const newProduct = { title: title, description: description, funds_goal: Number(fundsGoal), funds_raised: 0, images: formatImages(), creator_name: creatorName, creator_email: creatorEmail }
 
         handleAddProduct(newProduct);
         // addSingleProduct(newProduct);
         setMessage('You have successfully added your product')
     }
 
-    const handleAddImage = (e: any) => {
+    const handleAddImage = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         e.preventDefault();
         if (images.length < 4) {
             images.length ? setImages([...images, singleImage])
@@ -56,7 +56,7 @@ const CreateProduct = ({ handleAddProduct }: Props) => {
             setSingleImage('');
         } else {
             setError('You have reached the max amount of photo uploads')
-            setTimer(setTimeout(() => setError(''), 5000))
+            setTimeout(() => setError(''), 5000)
             setSingleImage('');
         }
     }
@@ -64,16 +64,16 @@ const CreateProduct = ({ handleAddProduct }: Props) => {
     return (
         <>
             <FormControl>
-                <TextField onChange={(e) => setCreatorName(e.target.value)} label="Full Name" color="warning" value={creatorName} focused/>
-                <TextField onChange={(e) => setCreatorEmail(e.target.value)} type="email" label="Email" color="success" value={creatorEmail} focused />
-                <TextField onChange={(e) => setTitle(e.target.value)} label="Product Title" variant="standard" color="warning" value={title} focused/>
-                <TextField onChange={(e) => setDescription(e.target.value)} label="Product Description" variant="standard" color="warning" value={description} focused/>
-                <TextField onChange={(e) => setFundsGoal(e.target.value)} label="Funds Needed" variant="standard" color="warning" value={fundsGoal} focused/>
+                <TextField onChange={(e) => setCreatorName(e.target.value)} label="Full Name" color="primary" value={creatorName} focused/>
+                <TextField onChange={(e) => setCreatorEmail(e.target.value)} type="email" label="Email" color="secondary" value={creatorEmail} focused />
+                <TextField onChange={(e) => setTitle(e.target.value)} label="Product Title" variant="standard" color="primary" value={title} focused/>
+                <TextField onChange={(e) => setDescription(e.target.value)} label="Product Description" variant="standard" color="primary" value={description} focused/>
+                <TextField onChange={(e) => setFundsGoal(e.target.value)} label="Funds Needed" variant="standard" color="primary" value={fundsGoal} focused/>
                 <input onChange={(e) => setSingleImage(e.target.value)} type="url" value={singleImage}/>
-                <Button onClick={(e) => handleAddImage(e)} variant="raised" component="span">
+                <Button onClick={(e: any) => handleAddImage(e)} component="span">
                     Add Photo
                 </Button>
-                <Button onClick={(e) => onAddProduct(e)} variant="contained" type="submit" color="seconday">Create Product</Button>
+                <Button onClick={(e) => onAddProduct(e)} variant="contained" type="submit" color="secondary">Create Product</Button>
                 <Link to="/">Return to browsing products</Link>
                 {error && <p>{error}</p>}
                 {message && <p>{message}</p>}
