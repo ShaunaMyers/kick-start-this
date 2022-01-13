@@ -1,8 +1,8 @@
 import Products from '../Products/Products';
-import { AllProducts } from '../../types';
+import { SingleProduct } from '../../types';
 
 interface Props {
-    productsList: AllProducts,
+    productsList: SingleProduct[],
     handleDeleteProduct: Function
 }
 

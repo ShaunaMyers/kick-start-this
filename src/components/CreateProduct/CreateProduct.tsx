@@ -3,7 +3,11 @@ import { addSingleProduct } from '../../apiCalls';
 import { Link } from 'react-router-dom';
 import { FormControl, TextField, Button } from '@material-ui/core';
 
-const CreateProduct = ({ handleAddProduct }) => {
+interface Props {
+    handleAddProduct: Function
+}
+
+const CreateProduct = ({ handleAddProduct }: Props) => {
 
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
