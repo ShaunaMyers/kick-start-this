@@ -19,10 +19,10 @@ import AddIcon from '@material-ui/icons/Add';
 const App = () => {
 
   const [products, setProducts]: [[], any] = useState([]);
-  const [error, setError] = useState('')
+  const [error, setError] = useState('');
   let { id } = useParams();
 
-  const returnProducts = (): AllProducts[] | undefined => {
+  const returnProducts = (): void => {
     setError('');
     getAllProducts()
     .then(result => {
