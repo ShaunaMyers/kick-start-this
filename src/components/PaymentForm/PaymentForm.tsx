@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
-import { stripVTControlCharacters } from 'util';
 import axios from "axios";
 
 const CARD_OPTIONS = {

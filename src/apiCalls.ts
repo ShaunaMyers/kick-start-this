@@ -1,3 +1,5 @@
+import { NewProduct } from './types';
+
 export const getAllProducts = () => {
     return fetch('https://kickstartthisapi.herokuapp.com/')
       .then(response => {
@@ -8,7 +10,7 @@ export const getAllProducts = () => {
       })
 };
 
-export const getSingleProduct = (id) => {
+export const getSingleProduct = (id: string) => {
     return fetch(`https://kickstartthisapi.herokuapp.com/product/${id}`)
       .then(response => {
         if (!response.ok) {
@@ -18,7 +20,7 @@ export const getSingleProduct = (id) => {
     })
 };
 
-export const addSingleProduct = (newProduct) => {
+export const addSingleProduct = (newProduct: NewProduct) => {
     return fetch('https://kickstartthisapi.herokuapp.com/products', {
       method: 'POST',
       headers: {
@@ -33,7 +35,7 @@ export const addSingleProduct = (newProduct) => {
     })
 };
 
-export const deleteSingleProduct = (id) => {
+export const deleteSingleProduct = (id: number) => {
     return fetch('https://kickstartthisapi.herokuapp.com/products', {
       method: 'DELETE',
       headers: {
