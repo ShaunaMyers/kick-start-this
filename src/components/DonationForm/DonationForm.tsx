@@ -4,7 +4,7 @@ import { Typography, Button, Divider } from '@material-ui/core';
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 
-const DonationForm = () => {
+const DonationForm = ({ handleUpdateFundsRaised }) => {
 
     const { id, title } = useParams();
 
@@ -18,7 +18,7 @@ const DonationForm = () => {
             <Typography variant="h6">We thank you for choosing to fund {title}!</Typography>
             <Divider />
             <Elements stripe={stripeTestPromise}>
-                <PaymentForm />
+                <PaymentForm handleUpdateFundsRaised={handleUpdateFundsRaised} id={id} />
             </Elements>
         </>
     );

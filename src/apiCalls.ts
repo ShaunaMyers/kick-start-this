@@ -50,3 +50,18 @@ export const deleteSingleProduct = (id: number) => {
     })
 };
 
+export const updateFundsRaised = (funds_raised: number, id: number) => {
+  return fetch(`https://kickstartthisapi.herokuapp.com/products/${id}`, {
+    method: 'PATCH',
+    headers: {
+      'content-type': 'application/json',
+    },
+    body: JSON.stringify({funds_raised})
+  })
+  .then(response => {
+    if (!response.ok) {
+      throw Error('Your rating was not successful')
+    }
+  })
+};
+

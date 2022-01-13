@@ -28,7 +28,8 @@ const PaymentForm = () => {
     const stripe = useStripe();
     const elements = useElements();
 
-    // const handleSubmit = async (e: React.FormEvent<FormEvent<Element>>) => {
+    const handleSubmit = (e )=> {
+        // async (e: React.FormEvent<FormEvent<Element>>) =>
     //     e.preventDefault();
     //     // const [error, paymentMethod]: any = await stripe!.createPaymentMethod({
     //     //     type: "card",
@@ -54,7 +55,11 @@ const PaymentForm = () => {
     //     // } else {
     //     //     console.log(error.message)
     //     // }
-    // }
+    }
+
+    const onUpdateFundsRaised = () => {
+        handleUpdateFundsRaised(donation, id)
+    }
 
 
     return(
@@ -70,7 +75,7 @@ const PaymentForm = () => {
                         />
                     </div>
                 </fieldset>
-                <button>Donate</button>
+                <button onClick={() => onUpdateFundsRaised()}>Donate</button>
             </form>
             :
             <div><h2>You have succesfully made a donation! Thank you!</h2></div>
