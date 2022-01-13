@@ -1,6 +1,7 @@
 import { FormControl, TextField, Button } from '@material-ui/core';
 
 const CreateProduct = () => {
+
     return (
         <>
             <FormControl>
@@ -16,7 +17,7 @@ const CreateProduct = () => {
                     Upload
                 </Button>
                 </label> 
-                <Button variant="contained" type="submit" color="seconday">Create Product</Button>
+                <Button onClick={(e) => onAddToProduct(e)} variant="contained" type="submit" color="seconday">Create Product</Button>
             </FormControl>
         </>
     )
