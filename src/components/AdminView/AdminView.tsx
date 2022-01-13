@@ -1,11 +1,11 @@
 import Products from '../Products/Products';
 
-const AdminView = ({ productsList }) => {
+const AdminView = ({ productsList, handleDeleteProduct }) => {
 
     const isAdmin = true;
 
     return (
-        <Products productsList={productsList} isAdmin={isAdmin} />
+        <Products productsList={productsList} isAdmin={isAdmin} handleDeleteProduct={handleDeleteProduct}/>
     )
 }
 
