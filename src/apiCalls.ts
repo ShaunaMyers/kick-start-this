@@ -18,7 +18,7 @@ export const getSingleProduct = (id) => {
     })
 };
 
-  export const addSingleProduct = (newProduct) => {
+export const addSingleProduct = (newProduct) => {
     return fetch('https://kickstartthisapi.herokuapp.com/products', {
       method: 'POST',
       headers: {
@@ -32,3 +32,19 @@ export const getSingleProduct = (id) => {
       }
     })
 };
+
+export const deleteProduct = (id) => {
+    return fetch(`https://kickstartthisapi.herokuapp.com/products/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify({id})
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw Error('Your delete request was not successful')
+      }
+    })
+};
+
