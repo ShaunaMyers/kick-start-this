@@ -4,7 +4,8 @@ import { getAllProducts } from '../../apiCalls';
 import Products from '../Products/Products';
 import ProductDetails from '../ProductDetails/ProductDetails';
 import DonationForm from '../DonationForm/DonationForm';
-import { Routes, Route, useParams } from 'react-router-dom';
+import CreateProduct from '../CreateProduct/CreateProduct';
+import { Routes, Route, useParams, Link } from 'react-router-dom';
 import { AllProducts } from '../../types';
 import AppBar from '@material-ui/core/AppBar';
 import Container from '@material-ui/core/Container';
@@ -15,7 +16,7 @@ import Box from '@material-ui/core/Box';
 import IconButton from '@material-ui/core/IconButton';
 import AddIcon from '@material-ui/icons/Add';
 
-function App() {
+const App = () => {
 
   const [products, setProducts]: [[], any] = useState([]);
   const [error, setError] = useState('')
@@ -40,10 +41,6 @@ function App() {
     returnProducts();
   }, [])
 
-  const returnProductInfo = () => {
-    return products.find(item => item.product_id === id)
-  }
-
   return (
     <main className="App">
       <AppBar position="static">
@@ -60,7 +57,7 @@ function App() {
             </Typography>
             <Box sx={{ flexGrow: 0 }}>
               <Tooltip title="Add Your Product">
-                <IconButton sx={{ p: 0 }}>
+                <IconButton component={Link} to="/createproduct" sx={{ p: 0 }}>
                   <AddIcon fontSize="large"/> 
                 </IconButton>
               </Tooltip>
@@ -72,6 +69,7 @@ function App() {
         <Route path="/" element={<Products productsList={products}/>} />
         <Route path="/products/:id" element={<ProductDetails />} />
         <Route path="/donate/:id/:title" element={<DonationForm />} />
+        <Route path="/createproduct" element={<CreateProduct />}/>
       </Routes>
     </main>
   );
