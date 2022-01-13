@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import './App.css';
-import { getAllProducts } from '../../apiCalls';
+import { getAllProducts, addSingleProduct } from '../../apiCalls';
 import Products from '../Products/Products';
 import ProductDetails from '../ProductDetails/ProductDetails';
 import DonationForm from '../DonationForm/DonationForm';
@@ -41,6 +41,12 @@ const App = () => {
     returnProducts();
   }, [])
 
+  const handleAddProduct = (newProduct) => {
+    addSingleProduct(newProduct);
+    setProducts([...products, newProduct])
+  }
+
+
   return (
     <main className="App">
       <AppBar position="static">
@@ -69,7 +75,7 @@ const App = () => {
         <Route path="/" element={<Products productsList={products}/>} />
         <Route path="/products/:id" element={<ProductDetails />} />
         <Route path="/donate/:id/:title" element={<DonationForm />} />
-        <Route path="/createproduct" element={<CreateProduct />}/>
+        <Route path="/createproduct" element={<CreateProduct handleAddProduct={handleAddProduct}/>}/>
       </Routes>
     </main>
   );

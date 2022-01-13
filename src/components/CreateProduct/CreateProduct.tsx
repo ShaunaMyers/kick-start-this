@@ -3,7 +3,7 @@ import { addSingleProduct } from '../../apiCalls';
 import { Link } from 'react-router-dom';
 import { FormControl, TextField, Button } from '@material-ui/core';
 
-const CreateProduct = () => {
+const CreateProduct = ({ handleAddProduct }) => {
 
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
@@ -44,7 +44,8 @@ const CreateProduct = () => {
         validateInputs();
         const newProduct = { title: title, description: description, funds_goal: parseInt(fundsGoal), funds_raised: 0, images: formatImages(), creator_name: creatorName, creator_email: creatorEmail }
 
-        addSingleProduct(newProduct);
+        handleAddProduct(newProduct);
+        // addSingleProduct(newProduct);
         setMessage('You have successfully added your product')
     }
 
