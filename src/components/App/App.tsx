@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import './App.css';
-import { getAllProducts, addSingleProduct, deleteSingleProduct } from '../../apiCalls';
+import { getAllProducts, addSingleProduct, deleteSingleProduct, updateFundsRaised } from '../../apiCalls';
 import Products from '../Products/Products';
 import ProductDetails from '../ProductDetails/ProductDetails';
 import DonationForm from '../DonationForm/DonationForm';
@@ -53,6 +53,11 @@ const App = () => {
     setProducts(remainingProducts);
   }
 
+  const handleUpdateFundsRaised = (donation, id) => {
+    const currentFunds = products.find(product => product.product_id === parseInt(id)).funds_raised
+    let totalFunds = currentFunds + parseInt(donation)
+    updateFundsRaised(totalFunds, parseInt(id))
+  }
 
   return (
     <main className="App">
@@ -82,7 +87,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<Products productsList={products} isAdmin={isAdmin} />} />
         <Route path="/products/:id" element={<ProductDetails />} />
-        <Route path="/donate/:id/:title" element={<DonationForm />} />
+        <Route path="/donate/:id/:title" element={<DonationForm handleUpdateFundsRaised={handleUpdateFundsRaised} />} />
         <Route path="/createproduct" element={<CreateProduct handleAddProduct={handleAddProduct} />} />
         <Route path="/adminview" element={<AdminView productsList={products} handleDeleteProduct={handleDeleteProduct}/>} />
       </Routes>
