@@ -25,6 +25,7 @@ const CARD_OPTIONS = {
 
 const PaymentForm = () => {
     const [successful, setSuccessful] = useState(false);
+    const [donation, setDonation] = useState(null)
     const stripe = useStripe();
     const elements = useElements();
 
@@ -39,7 +40,7 @@ const PaymentForm = () => {
             try {
                 const { id } = paymentMethod;
                 const response = await axios.post("http://localhost:4000/payment", {
-                    amount: 1000,
+                    amount: donation,
                     id
                 })
     
@@ -61,6 +62,8 @@ const PaymentForm = () => {
        <>
         {!successful ?
             <form onSubmit={handleSubmit}>
+                <label for="donation-amount">Donation Amount</label>
+                <input onChange={(e) => setDonation(e.target.value)} id="donation-amount" type="number" step="0.01" placeholder="$0" value={donation}/>
                 <fieldSet>
                     <div>
                         <CardElement options={CARD_OPTIONS} />
