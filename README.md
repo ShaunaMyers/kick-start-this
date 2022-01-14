@@ -15,7 +15,7 @@
 
 ## Overview and Project Goals
 
-Welcome to Kickstart This - The goal of this application was to stretch boundaries by learning new technologies by emplying new concepts. The server was built using Express and the database was built using PostgreSQL. The frontend was built using React, TypeScript, and materials-ui.
+Welcome to Kickstart This - The goal of this application was to stretch boundaries by learning new technologies by employing new concepts. The server was built using Express and the database was built using PostgreSQL. The frontend was built using React, TypeScript, and materials-ui.
 
 Focus was paid on MVC architecture: separating concerns and thinking about what components held on to state (controllers) and what components affected the view. An example of this is found in the App component
 
@@ -34,7 +34,7 @@ Focus was paid on MVC architecture: separating concerns and thinking about what 
 
 This application will be deployed at a future date, due to new Typescript additions being added.
 
-The Express server is located in another repo [here](https://github.com/ShaunaMyers/kick-start-this-api)
+## The Express server is located in another repo [here](https://github.com/ShaunaMyers/kick-start-this-api)
 
 To view the application on your local device:
 
@@ -93,6 +93,7 @@ To solidify and demonstrate the understanding of:
 
 #### Choose to Delete a Product
 - The user may type in "adminview" at the end of the url and will be taken to an admin page where they can delete products<br>
+  - *In future additions This functionality will only be available after logging in. Each user could then edit or delete their own products
 <img width="1438" alt="Screen Shot 2022-01-13 at 5 50 21 PM" src="https://user-images.githubusercontent.com/74690897/149432252-124d4803-b9ea-407c-83b4-26c498b44188.png">
 
 
@@ -107,7 +108,8 @@ To solidify and demonstrate the understanding of:
 
 ## Future Additions
 
-- Styling- MUI components need some custom stying added and this was a task that was too big to take on while learning PostGres, Express, TypeScript, and trying to implement the Stripe API
+- Deployment after all TypeScript errors have been addressed
+- Styling- MUI components need some custom styling added and this was a task that was too big to take on while learning PostGres, Express, TypeScript, and trying to implement the Stripe API
 - *Log-in funcionality- so users can:
   - favorite products
   - save payment information for future use
