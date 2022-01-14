@@ -12,6 +12,7 @@
 - [Future Additions](#future-additions)
 - [Contributors](#contributors)
 
+
 ## Overview and Project Goals
 
 Welcome to Kickstart This - The goal of this application was to stretch boundaries by learning new technologies by emplying new concepts. The server was built using Express and the database was built using PostgreSQL. The frontend was built using React, TypeScript, and materials-ui.
@@ -25,6 +26,7 @@ Focus was paid on MVC architecture: separating concerns and thinking about what 
 - Each child component only holds on to the state it needs
   - The input field values from the form, when a user creates a product (in CreateProduct component)
   - Error messages that are saved to state to allow for the rendering of user friendly messages 
+
 
 ## Installation and Viewing 
 
@@ -72,37 +74,40 @@ To solidify and demonstrate the understanding of:
 
 #### View All Products
 - A user may view all products on main page<br>
-![Demo browsing products on main page]()
+<img width="1440" alt="Screen Shot 2022-01-13 at 5 47 39 PM" src="https://user-images.githubusercontent.com/74690897/149432019-3024aa9e-bd12-48d8-9bb7-124804eb201d.png">
+
 
 
 
 #### View Specific Product
 - The user may click "more info" on the product to see it in greater detail<br>
-![Demo viewing single product]()
+<img width="1440" alt="Screen Shot 2022-01-13 at 5 47 19 PM" src="https://user-images.githubusercontent.com/74690897/149432030-ae4c5e0b-1841-419c-8fd7-2eb35f044d8d.png">
+
 
 
 
 #### Choose to add a Product
 - The user may click on a plus icon in the top right and can fill out a form to add their own product<br>
-![Demo of click on donate]()
-
+<img width="1440" alt="Screen Shot 2022-01-13 at 5 49 37 PM" src="https://user-images.githubusercontent.com/74690897/149432187-b379b0d6-2516-40ae-9742-9110671eabbc.png">
 
 
 #### Choose to Delete a Product
 - The user may type in "adminview" at the end of the url and will be taken to an admin page where they can delete products<br>
-![Demo of deleting product]()
+<img width="1438" alt="Screen Shot 2022-01-13 at 5 50 21 PM" src="https://user-images.githubusercontent.com/74690897/149432252-124d4803-b9ea-407c-83b4-26c498b44188.png">
 
 
 
 #### Choose to donate
 - The user may click on a donate button on a specific product and will be taken to a payment form<br>
-![Demo of click on donate]()
+
+<img width="1439" alt="Screen Shot 2022-01-13 at 5 51 20 PM" src="https://user-images.githubusercontent.com/74690897/149432340-7d1ffced-3ad6-4554-ae13-966bf887ff1d.png">
 
 
 
 
 ## Future Additions
 
+- Styling- MUI components need some custom stying added and this was a task that was too big to take on while learning PostGres, Express, TypeScript, and trying to implement the Stripe API
 - *Log-in funcionality- so users can:
   - favorite products
   - save payment information for future use
