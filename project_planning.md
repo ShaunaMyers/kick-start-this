@@ -21,8 +21,6 @@
     - Nice nav bar with links, H1, & search field
 
 ## Day 1 ToDo- Saturday
-
-## Day 1 ToDo- Saturday
 * [x] Create Project Planning Document  
 * [x] Initialize React repository with TypeScript (don’t write any code just yet!)  
 * [x] Install material-ui, stripe, react-router-dom, & reacter-hook-form
