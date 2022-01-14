@@ -27,6 +27,12 @@ Focus was paid on MVC architecture: separating concerns and thinking about what 
   - The input field values from the form, when a user creates a product (in CreateProduct component)
   - Error messages that are saved to state to allow for the rendering of user friendly messages 
 
+Intensive planning was prioritized, with a [project board](https://github.com/ShaunaMyers/kick-start-this/projects/1) and a [planning document](https://github.com/ShaunaMyers/kick-start-this/blob/main/project_planning.md) that contains links to wireframes and a schema.
+  - A proper workflow was adhered to: 
+    - creating issues/tickets with labels & an assignee
+    - creating issues/tickets according to user stories
+    - closing tickets with pull requests
+
 
 ## Installation and Viewing 
 
