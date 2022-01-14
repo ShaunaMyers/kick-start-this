@@ -6,8 +6,6 @@
 
 ## Design Inspirations (UI)
 
-## Day 1 ToDo- Saturday
-
 - [kickstarter.com](https://www.kickstarter.com/discover/categories/technology/apps)
     - I like the spacing, two products across the screen 
     - Simple colors/design (white with green logo)
@@ -22,6 +20,7 @@
     - Simple color scheme: white with pink & red
     - Nice nav bar with links, H1, & search field
 
+## Day 1 ToDo- Saturday
 
 ## Day 1 ToDo- Saturday
 * [x] Create Project Planning Document  
