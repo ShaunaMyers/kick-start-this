@@ -1,7 +1,7 @@
 
 # *Kickstart This*
 
-
+Have you ever had an amazing idea for a product but you abandoned that idea because you didn't have the funding?! Kickstart This is the application for you. You can choose to browse products and help fund the dreams of others, or you can add your own product to eventually recieve funding.
 
 ### Table of Contents
 - [Overview](#overview-and-project-goals)
@@ -110,6 +110,7 @@ To solidify and demonstrate the understanding of:
 
 - Deployment after all TypeScript errors have been addressed
 - Styling- MUI components need some custom styling added and this was a task that was too big to take on while learning PostGres, Express, TypeScript, and trying to implement the Stripe API
+- Connect to Stripe API so that users can submit payments to fund products
 - *Log-in funcionality- so users can:
   - favorite products
   - save payment information for future use
